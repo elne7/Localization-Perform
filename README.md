@@ -1,12 +1,13 @@
-# animation_perform
+# localization_perform
 
 Considering my last project the `Simple Shopping App`, This Task is a complement for the previous project.
 You can see the shopping app from here: [https://github.com/elne7/Simple-Shopping-App.git]
 
 **Features:**
 
-- Performs fading animation while pages transation.
+- Displays the app in English and can change it to Arabic.
+- Adding `Drawer` for side options in the home page.
 
 **Dependencies:**
 
-- Uses the `page_transition` package to perform this animation easier.
+- Uses the `EasyLocalization` package to localise the app.
