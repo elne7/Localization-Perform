@@ -1,0 +1,13 @@
+{
+    "Sign_Up" : "Sign Up",
+    "title" : "Shopping App",
+    "products" : "Our Products",
+    "offers" : "Hot Offers",
+    "sign_out" : "Sign Out",
+    "return" : "Return back",
+    "change_lang" : "Change Language",
+    "switch" : "Switch between en & ar",
+    "success" : "Account Successfully Created!",
+    "enter" : "Go to the app",
+    "submit" : "Submit"
+}

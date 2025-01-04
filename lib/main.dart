@@ -1,9 +1,18 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-// import 'package:simple_shopping_app/views/home_view.dart';
 import 'package:simple_shopping_app/views/sign_up_view.dart';
 
-void main() {
-  runApp(const SimpleShoppingApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
+  runApp(
+    EasyLocalization(
+      supportedLocales: const [Locale('en', 'US'), Locale('ar', 'EG')],
+      path: 'lang',
+      fallbackLocale: const Locale('en', 'US'),
+      child: const SimpleShoppingApp(),
+    ),
+  );
 }
 
 class SimpleShoppingApp extends StatelessWidget {
@@ -11,10 +20,14 @@ class SimpleShoppingApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false, // Remove the debug sign from the screen
+    return MaterialApp(
+      localizationsDelegates: context.localizationDelegates,
+      supportedLocales: context.supportedLocales,
+      locale: context.locale,
+      debugShowCheckedModeBanner:
+          false, // Remove the debug sign from the screen
       title: 'Simple Shopping App',
-      home: SignUpView(), // Displaying the Home View page
+      home: const SignUpView(), // Displaying the Home View page
     );
   }
 }

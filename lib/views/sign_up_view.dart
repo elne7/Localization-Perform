@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:simple_shopping_app/views/home_view.dart';
@@ -30,9 +31,9 @@ class _SignUpViewState extends State<SignUpView> {
       // Creating the app bar
       appBar: AppBar(
         centerTitle: true,
-        title: const Text(
-          "Shopping App",
-          style: TextStyle(color: Colors.white),
+        title: Text(
+          tr('title'),
+          style: const TextStyle(color: Colors.white),
         ),
         backgroundColor: Colors.blue,
       ),
@@ -45,9 +46,9 @@ class _SignUpViewState extends State<SignUpView> {
               const SizedBox(
                 height: 50,
               ),
-              const Text(
-                'Sign Up',
-                style: TextStyle(
+              Text(
+                tr('Sign_Up'),
+                style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
@@ -148,9 +149,9 @@ class _SignUpViewState extends State<SignUpView> {
                   }
                 },
                 style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
-                child: const Text(
-                  'Submit',
-                  style: TextStyle(color: Colors.white),
+                child: Text(
+                  tr('submit'),
+                  style: const TextStyle(color: Colors.white),
                 ),
               )
             ],
@@ -167,13 +168,13 @@ class _SignUpViewState extends State<SignUpView> {
       builder: (BuildContext context) {
         // Display the dialog
         return AlertDialog(
-          title: const Text('Signing Up'),
-          content: const Text('Account Successfully Created!'),
+          title: Text(tr('Sign_Up')),
+          content: Text(tr('success')),
           actions: <Widget>[
             TextButton(
-              child: const Text(
-                'Go to the app',
-                style: TextStyle(color: Colors.black),
+              child: Text(
+                tr('enter'),
+                style: const TextStyle(color: Colors.black),
               ),
               onPressed: () {
                 // Navigate to the home page
@@ -183,7 +184,7 @@ class _SignUpViewState extends State<SignUpView> {
                   PageTransition(
                     duration: const Duration(seconds: 1),
                     type: PageTransitionType.fade,
-                    child: const HomeView(),
+                    child: HomeView(),
                   ),
                 );
               },
