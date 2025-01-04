@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:page_transition/page_transition.dart';
-import 'package:simple_shopping_app/views/home_view.dart';
+import 'package:simple_shopping_app/widgets/custom_button.dart';
+import 'package:simple_shopping_app/widgets/custom_text.dart';
 import 'package:simple_shopping_app/widgets/custom_text_form_field.dart';
 import 'package:validators/validators.dart';
 
@@ -13,8 +13,8 @@ class SignUpView extends StatefulWidget {
 }
 
 class _SignUpViewState extends State<SignUpView> {
-  GlobalKey<FormState> formKey =
-      GlobalKey(); // Initialising a formkey to control the form validation
+  // Initialising a formkey to control the form validation
+  GlobalKey<FormState> formKey = GlobalKey();
 
   // Initializing the textfields controllers
   TextEditingController nameController = TextEditingController();
@@ -43,20 +43,9 @@ class _SignUpViewState extends State<SignUpView> {
           key: formKey, // Giving the form key to the form
           child: ListView(
             children: [
-              const SizedBox(
-                height: 50,
-              ),
-              Text(
-                tr('Sign_Up'),
-                style: const TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-
+              const SizedBox(height: 50),
+              CustomText(text: tr('Sign_Up')),
+              const SizedBox(height: 20),
               // Initializing the text form field
               CustomTextFormField(
                 hintText: 'Full Name',
@@ -70,9 +59,7 @@ class _SignUpViewState extends State<SignUpView> {
                   return null;
                 },
               ),
-              const SizedBox(
-                height: 30,
-              ),
+              const SizedBox(height: 30),
               CustomTextFormField(
                 hintText: 'E-mail',
                 controller: emailController,
@@ -85,9 +72,7 @@ class _SignUpViewState extends State<SignUpView> {
                   return null;
                 },
               ),
-              const SizedBox(
-                height: 30,
-              ),
+              const SizedBox(height: 30),
               CustomTextFormField(
                 hintText: 'Password',
                 controller: passController,
@@ -105,15 +90,11 @@ class _SignUpViewState extends State<SignUpView> {
                     if (value.length < 6) {
                       return 'The Password must have at least 6 characters';
                     }
-                  } else {
-                    return 'Please enter a password';
                   }
                   return null;
                 },
               ),
-              const SizedBox(
-                height: 30,
-              ),
+              const SizedBox(height: 30),
               CustomTextFormField(
                 hintText: 'Confirm Password',
                 controller: confirmPassController,
@@ -136,62 +117,13 @@ class _SignUpViewState extends State<SignUpView> {
                   return null;
                 },
               ),
-              const SizedBox(
-                height: 50,
-              ),
-
+              const SizedBox(height: 50),
               // Initializing an ElevatedButton to submit
-              ElevatedButton(
-                onPressed: () {
-                  // Checking if the form validation is correct
-                  if (formKey.currentState!.validate()) {
-                    showMyDialog();
-                  }
-                },
-                style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
-                child: Text(
-                  tr('submit'),
-                  style: const TextStyle(color: Colors.white),
-                ),
-              )
+              CustomButton(formKey: formKey)
             ],
           ),
         ),
       ),
-    );
-  }
-
-  // Initializing a function shows a dialog
-  Future<void> showMyDialog() async {
-    return showDialog<void>(
-      context: context,
-      builder: (BuildContext context) {
-        // Display the dialog
-        return AlertDialog(
-          title: Text(tr('Sign_Up')),
-          content: Text(tr('success')),
-          actions: <Widget>[
-            TextButton(
-              child: Text(
-                tr('enter'),
-                style: const TextStyle(color: Colors.black),
-              ),
-              onPressed: () {
-                // Navigate to the home page
-                Navigator.push(
-                  context,
-                  // Adding fade animation with page transition
-                  PageTransition(
-                    duration: const Duration(seconds: 1),
-                    type: PageTransitionType.fade,
-                    child: HomeView(),
-                  ),
-                );
-              },
-            ),
-          ],
-        );
-      },
     );
   }
 }

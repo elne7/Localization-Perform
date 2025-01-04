@@ -1,51 +1,20 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:simple_shopping_app/widgets/custom_drawer.dart';
 import 'package:simple_shopping_app/widgets/custom_grid_view.dart';
 import 'package:simple_shopping_app/widgets/custom_list_view.dart';
 import 'package:simple_shopping_app/widgets/custom_page_view.dart';
 import 'package:simple_shopping_app/widgets/custom_text.dart';
 
 class HomeView extends StatelessWidget {
-  HomeView({super.key});
-
-  bool lang = true;
+  const HomeView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Container(
-        // Adding drawer for side options
-        color: Colors.white,
-        width: MediaQuery.of(context).size.width * 0.8,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ListTile(
-              title: Text(tr('sign_out')),
-              subtitle: Text(tr('return')),
-              trailing: IconButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                  Navigator.pop(context);
-                },
-                icon: const Icon(Icons.logout),
-              ),
-            ),
-            ListTile(
-              title: Text(tr('change_lang')),
-              subtitle: Text(tr('switch')),
-              trailing: IconButton(
-                onPressed: () {
-                  toggleLanguage(context);
-                },
-                icon: const Icon(Icons.language),
-              ),
-            )
-          ],
-        ),
-      ),
-      // Creating the app bar
+      drawer: const CustomDrawer(),
       appBar: AppBar(
+        // Creating the app bar
         centerTitle: true,
         title: Text(
           tr('title'),
@@ -81,19 +50,5 @@ class HomeView extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  void toggleLanguage(BuildContext context) {
-    if (lang) {
-      lang = !lang;
-      context.setLocale(
-        const Locale('ar', 'EG'),
-      );
-    } else {
-      lang = !lang;
-      context.setLocale(
-        const Locale('en', 'US'),
-      );
-    }
   }
 }
