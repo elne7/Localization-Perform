@@ -14,6 +14,7 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: Container(
+        // Adding drawer for side options
         color: Colors.white,
         width: MediaQuery.of(context).size.width * 0.8,
         child: Column(

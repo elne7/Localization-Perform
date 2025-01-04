@@ -6,10 +6,11 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
   runApp(
+    // Adding EasyLocalization package
     EasyLocalization(
       supportedLocales: const [Locale('en', 'US'), Locale('ar', 'EG')],
       path: 'lang',
-      fallbackLocale: const Locale('en', 'US'),
+      fallbackLocale: const Locale('en', 'US'), // Setting English as a defult language
       child: const SimpleShoppingApp(),
     ),
   );
@@ -21,6 +22,7 @@ class SimpleShoppingApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      // Localising the app
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,
